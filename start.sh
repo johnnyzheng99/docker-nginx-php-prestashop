@@ -17,7 +17,7 @@ fi
 if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDEN" == "TRUE" ]]; then
 cat > /data/conf/nginx/hosts.d/$DOMAIN.conf <<EOF
 server {
-      listen      80 default;
+      listen      80;
       server_name $DOMAIN;
       root        /data/www/$PRESTASHOP;
       index       index.php index.html;
