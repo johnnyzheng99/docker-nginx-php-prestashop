@@ -7,11 +7,13 @@ RUN yum -y install git sendmail  && \
 RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
     rm -rf PRESTASHOPINSTALL && \
-    git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOPINSTALL && \
-    cd /$PRESTASHOPINSTALL && \
-    mv install-dev install && \
-    mv admin-dev admin && \
-    rm -rf .git
+    wget http://www.prestashop.com/download/old/prestashop_1.6.0.9.zip
+
+#    cd /$PRESTASHOPINSTALL && \
+#    mv install-dev install && \
+#    mv admin-dev admin && \
+#    rm -rf .git
+#    git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOPINSTALL && \
 
 # Exposed ENV
 ENV DOMAIN **prestashop**
