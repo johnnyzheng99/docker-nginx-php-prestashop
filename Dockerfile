@@ -8,9 +8,7 @@ RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
     rm -rf PRESTASHOPINSTALL && \
     git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOPINSTALL && \
-    chown www:www $PRESTASHOPINSTALL -R && \
     cd /$PRESTASHOPINSTALL && \
-    chmod 775 upload config themes log cache && \
     mv install-dev install && \
     mv admin-dev admin && \
     rm -rf .git

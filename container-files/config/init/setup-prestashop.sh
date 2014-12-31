@@ -11,6 +11,10 @@ if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDDEN" == "TRUE" ]]; then
         cd /data/www
         rm -rf $PRESTASHOP
         mv /$PRESTASHOPINSTALL $PRESTASHOP
+        chown www:www $PRESTASHOP -R
+        chmod 755 $PRESTASHOP -R
+        cd $PRESTASHOP
+        chmod 777 upload config themes log cache
 fi
 
 if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDDEN" == "TRUE" ]]; then
