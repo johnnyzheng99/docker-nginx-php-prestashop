@@ -10,7 +10,7 @@ ENV SHOP_NAME **prestashop**
 ENV LANGUAGE Europe/Paris
 ENV SHOP_PASSWORD 0123456789
 ENV SHOP_EMAIL pub@prestashop.com
-ENV $OVERRIDEN FALSE
+ENV OVERRIDEN FALSE
 
 ADD start.sh start.sh
 RUN chmod 755 /start.sh
