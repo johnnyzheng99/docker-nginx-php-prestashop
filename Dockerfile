@@ -1,7 +1,7 @@
 FROM million12/nginx-php:latest
 MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
 
-RUN yum -y install wget sendmail  && \
+RUN yum -y install wget unzip sendmail  && \
     yum clean all
 
 RUN PRESTASHOPINSTALL=prestashop-install && \
