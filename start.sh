@@ -7,8 +7,9 @@ fi
 : ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; : ${SHOP_NAME:=$DOMAIN};
 export TZ=$TIMEZONE
 
-if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDEN" == "TRUE" ]]; then
+if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDDEN" == "TRUE" ]]; then
         cd /data/www
+        rm -rf $PRESTASHOP
         git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOP
         chown www:www $PRESTASHOP -R
         cd /data/www/$PRESTASHOP; chmod 775 upload config themes log cache
@@ -16,7 +17,7 @@ if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDEN" == "TRUE" ]]; then
         mv admin-dev admin
 fi
 
-if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDEN" == "TRUE" ]]; then
+if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDDEN" == "TRUE" ]]; then
 cat > /data/conf/nginx/hosts.d/$DOMAIN.conf <<EOF
 server {
       listen      80;
@@ -30,8 +31,9 @@ server {
 EOF
 fi
 
-if [[ -d /data/www/$PRESTASHOP/install || "$OVERRIDEN" == "TRUE" ]]; then
+if [[ -d /data/www/$PRESTASHOP/install || "$OVERRIDDEN" == "TRUE" ]]; then
     cd /data/www/$PRESTASHOP/install
+    echo "--- Installing ---"
     php index_cli.php --domain=$DOMAIN --name=$SHOP_NAME --language=$LANGUAGE --timezone=$TIMEZONE \
         --db_create=1 --db_server=db --db_name=$PRESTASHOP --db_user=admin --db_password=$DB_ENV_MARIADB_PASS \
         --password=$SHOP_PASSWORD --email=$SHOP_EMAIL --newsletter=0

@@ -10,11 +10,17 @@ docker run -d --volumes-from=web-data -p=80:80 --name=prestashop johnnyzheng/ngi
 Prestashop installation parameters can be specified in the docker environment variables. The parameters include:
 
 DOMAIN
+
 LANGUAGE
+
 TIMEZONE
+
 SHOP_NAME
+
 SHOP_EMAIL
+
 SHOP_PASSWORD
+
 
 ## Authors
 
