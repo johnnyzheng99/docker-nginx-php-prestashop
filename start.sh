@@ -1,5 +1,10 @@
+if [ ${DOMAIN} == "**prestashop**" ]; then
+    unset DOMAIN
+fi
+if [ ${SHOP_NAME} == "**prestashop**" ]; then
+    unset SHOP_NAME
+fi
 : ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; : ${SHOP_NAME:=$DOMAIN};
-#: ${LANGUAGE:="en"}; : ${TIMEZONE:="Europe/Paris"}; : ${SHOP_PASSWORD:="0123456789"}; : ${SHOP_EMAIL:="admin@$DOMAIN"};
 export TZ=$TIMEZONE
 
 if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDEN" == "TRUE" ]]; then
