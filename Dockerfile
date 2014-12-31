@@ -14,6 +14,6 @@ ENV SHOP_PASSWORD 0123456789
 ENV SHOP_EMAIL pub@prestashop.com
 ENV $OVERRIDEN FALSE
 
-ADD ./start.sh ~/start.sh
-RUN chmod 755 ~/start.sh
+ADD start.sh start.sh
+RUN chmod 755 /start.sh
 CMD ["/bin/bash", "/start.sh"]
