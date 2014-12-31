@@ -4,12 +4,12 @@ MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
 RUN yum -y install git sendmail  && \
     yum clean all
 
-RUN PRESTASHOP-INSTALL = prestashop-install && \
+RUN PRESTASHOPINSTALL = prestashop-install && \
     cd / && \
-    rm -rf $PRESTASHOP-INSTALL && \
-    git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOP-INSTALL && \
-    chown www:www $PRESTASHOP-INSTALL -R && \
-    cd /$PRESTASHOP-INSTALL && \
+    rm -rf PRESTASHOPINSTALL && \
+    git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOPINSTALL && \
+    chown www:www $PRESTASHOPINSTALL -R && \
+    cd /$PRESTASHOPINSTALL && \
     chmod 775 upload config themes log cache && \
     mv install-dev install && \
     mv admin-dev admin && \

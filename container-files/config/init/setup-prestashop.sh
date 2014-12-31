@@ -4,13 +4,13 @@ fi
 if [[ "$SHOP_NAME" == "**prestashop**" ]]; then
     unset SHOP_NAME
 fi
-: ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; PRESTASHOP-INSTALL=prestashop-install : ${SHOP_NAME:=$DOMAIN};
+: ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; PRESTASHOPINSTALL=prestashop-install : ${SHOP_NAME:=$DOMAIN};
 export TZ=$TIMEZONE
 
 if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDDEN" == "TRUE" ]]; then
         cd /data/www
         rm -rf $PRESTASHOP
-        mv /$PRESTASHOP-INSTALL $PRESTASHOP
+        mv /$PRESTASHOPINSTALL $PRESTASHOP
 fi
 
 if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDDEN" == "TRUE" ]]; then
