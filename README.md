@@ -2,7 +2,7 @@
 
 ```
 docker run -d -v /data --name=web-data busybox
-docker run -d --volumes-from=web-data -p=80:80 --name=prestashop johnnynews/nginx-php-prestashop
+docker run -d --volumes-from=web-data -p=80:80 --name=prestashop johnnyzheng/nginx-php-prestashop
 ```
 
 ## Customise
@@ -18,4 +18,4 @@ SHOP_PASSWORD
 
 ## Authors
 
-Author: johnnynews (<johnny@itfolks.com.au>)
+Author: johnnyzheng (<johnny@itfolks.com.au>)

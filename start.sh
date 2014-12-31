@@ -12,6 +12,8 @@ if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDEN" == "TRUE" ]]; then
         git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOP
         chown www:www $PRESTASHOP -R
         cd /data/www/$PRESTASHOP; chmod 775 upload config themes log cache
+        mv install_dev install
+        mv admin_dev admin
 fi
 
 if [[ ! -d /data/conf/nginx/hosts.d/$DOMAIN.conf || "$OVERRIDEN" == "TRUE" ]]; then
