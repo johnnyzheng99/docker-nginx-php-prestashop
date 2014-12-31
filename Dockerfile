@@ -4,7 +4,7 @@ MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
 RUN yum -y install git sendmail  && \
     yum clean all
 
-RUN PRESTASHOPINSTALL = prestashop-install && \
+RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
     rm -rf PRESTASHOPINSTALL && \
     git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOPINSTALL && \
