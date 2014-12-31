@@ -6,9 +6,9 @@ RUN yum -y install wget unzip sendmail  && \
 
 RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
-    wget http://www.prestashop.com/download/old/prestashop_1.6.0.9.zip && \
-    unzip prestashop*.zip $PRESTASHOPINSTALL && \
-#   rm -f $PRESTASHOPINSTALL.zip
+    wget http://www.prestashop.com/download/old/prestashop_1.6.0.9.zip -O prestashop.zip&& \
+    unzip prestashop.zip && \
+   rm -f prestashop.zip
 #    cd /$PRESTASHOPINSTALL && \
 #    mv install-dev install && \
 #    mv admin-dev admin && \
