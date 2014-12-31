@@ -1,14 +1,15 @@
 FROM million12/nginx-php:latest
 MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
 
-RUN yum -y install git sendmail  && \
+RUN yum -y install sendmail  && \
     yum clean all
 
 RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
-    rm -rf PRESTASHOPINSTALL && \
-    wget http://www.prestashop.com/download/old/prestashop_1.6.0.9.zip
-
+    rm -rf $PRESTASHOPINSTALL && \
+    curl -o $PRESTASHOPINSTALL.zip http://www.prestashop.com/download/old/prestashop_1.6.0.9.zip && \
+    unzip $PRESTASHOPINSTALL.zip && \
+    rm -f $PRESTASHOPINSTALL.zip
 #    cd /$PRESTASHOPINSTALL && \
 #    mv install-dev install && \
 #    mv admin-dev admin && \
