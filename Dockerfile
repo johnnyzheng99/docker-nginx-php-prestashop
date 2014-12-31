@@ -14,4 +14,7 @@ ENV OVERRIDEN FALSE
 
 ADD start.sh start.sh
 RUN chmod 755 /start.sh
+
+VOLUME ["/data"]
+
 CMD ["/bin/bash", "/start.sh"]
