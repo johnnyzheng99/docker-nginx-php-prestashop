@@ -10,7 +10,7 @@ export TZ=$TIMEZONE
 if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDDEN" == "TRUE" ]]; then
         cd /data/www
         rm -rf $PRESTASHOP
-        mv /prestashop-install $PRESTASHOP
+        mv /prestashop-install/prestashop $PRESTASHOP
         chown www:www $PRESTASHOP -R
         chmod 755 $PRESTASHOP -R
         cd $PRESTASHOP
