@@ -4,6 +4,17 @@ MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
 RUN yum -y install git sendmail  && \
     yum clean all
 
+RUN PRESTASHOP-INSTALL = prestashop-install && \
+    cd / && \
+    rm -rf $PRESTASHOP-INSTALL && \
+    git clone https://github.com/PrestaShop/PrestaShop.git $PRESTASHOP-INSTALL && \
+    chown www:www $PRESTASHOP-INSTALL -R && \
+    cd /$PRESTASHOP-INSTALL && \
+    chmod 775 upload config themes log cache && \
+    mv install-dev install && \
+    mv admin-dev admin && \
+    rm -rf .git
+
 # Exposed ENV
 ENV DOMAIN **prestashop**
 ENV SHOP_NAME **prestashop**
@@ -12,9 +23,9 @@ ENV SHOP_PASSWORD 0123456789
 ENV SHOP_EMAIL pub@prestashop.com
 ENV OVERRIDDEN FALSE
 
-ADD start.sh start.sh
-RUN chmod 755 /start.sh
-
 VOLUME ["/data"]
 
-CMD ["/bin/bash", "/start.sh"]
+#CAN NOT HAVE CMD HERE AS THERE WAS A ENTRYPOINT IN PARENT BASE IMAGE ALREADY. USE THE .SH FILE IN INIT FOLDER INSTEAD
+#ADD start.sh start.sh
+#RUN chmod 755 /start.sh
+#CMD ["/bin/bash", "/start.sh"]
