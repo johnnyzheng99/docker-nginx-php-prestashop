@@ -4,7 +4,7 @@ fi
 if [[ "$SHOP_NAME" == "**prestashop**" ]]; then
     unset SHOP_NAME
 fi
-: ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; PRESTASHOPINSTALL=prestashop-install : ${SHOP_NAME:=$DOMAIN};
+: ${DOMAIN:=$HOSTNAME}; PRESTASHOP=prestashop-$DOMAIN; PRESTASHOPINSTALL=prestashop-install : ${SHOP_NAME:=$DOMAIN}; : ${TIMEZONE:="Asia/Shanghai"};
 export TZ=$TIMEZONE
 
 if [[ ! -d /data/www/$PRESTASHOP || "$OVERRIDDEN" == "TRUE" ]]; then

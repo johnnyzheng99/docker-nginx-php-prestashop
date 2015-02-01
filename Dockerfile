@@ -1,8 +1,5 @@
-FROM million12/nginx-php:latest
+FROM johnnyzheng:centos-nginx-php
 MAINTAINER Johnny Zheng <johnny@itfolks.com.au>
-
-RUN yum -y install unzip sendmail  && \
-    yum clean all
 
 RUN PRESTASHOPINSTALL=prestashop-install && \
     cd / && \
@@ -19,16 +16,9 @@ RUN PRESTASHOPINSTALL=prestashop-install && \
 # Exposed ENV
 ENV DOMAIN **prestashop**
 ENV SHOP_NAME **prestashop**
-ENV LANGUAGE Europe/Paris
+ENV LANGUAGE Asia/Shanghai
 ENV SHOP_PASSWORD 0123456789
 ENV SHOP_EMAIL pub@prestashop.com
 ENV OVERRIDDEN FALSE
 
-VOLUME ["/data"]
-
 ADD container-files /
-
-#CAN NOT HAVE CMD HERE AS THERE WAS A ENTRYPOINT IN PARENT BASE IMAGE ALREADY. USE THE .SH FILE IN INIT FOLDER INSTEAD
-#ADD start.sh start.sh
-#RUN chmod 755 /start.sh
-#CMD ["/bin/bash", "/start.sh"]
